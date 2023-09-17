@@ -1,38 +1,28 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
-// Определим интерфейс MyInterface
 type MyInterface interface {
 	Method1() string
-	Method2(int) int
 }
 
-// Создадим структуру MyType, реализующую интерфейс MyInterface
-type MyType struct {
-	value int
+type Mystruct struct {
+	Name string
 }
 
-func (mt MyType) Method1() string {
-	return fmt.Sprintf("Method1 called with value %d", mt.value)
-}
-
-func (mt MyType) Method2(arg int) int {
-	return mt.value + arg
+func (mt Mystruct) Method1() string {
+	return mt.Name
 }
 
 func main() {
-	// Создадим экземпляр MyType и присвоим его переменной интерфейса MyInterface
-	var intf MyInterface
-	mt := MyType{value: 42}
-	intf = mt
+	var inf MyInterface
 
-	// Вызовем методы через интерфейс
-	result1 := intf.Method1()
-	result2 := intf.Method2(10)
+	d := Mystruct{
+		Name: "dauren",
+	}
 
-	fmt.Println(result1) // Вывод: Method1 called with value 42
-	fmt.Println(result2) // Вывод: 52
+	inf = d
+	result := inf.Method1()
+	fmt.Println(result)
+
 }
