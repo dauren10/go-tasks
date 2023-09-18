@@ -20,6 +20,7 @@ func isUnique(data []int) bool {
 	un := make(map[int]bool)
 	for _, item := range data {
 		_, ok := un[item]
+		value, exist := un[item]
 		if ok {
 			return false
 		}
